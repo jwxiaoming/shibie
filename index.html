@@ -11,7 +11,9 @@
             var reader = new FileReader();
             reader.readAsDataURL(upload.files[0]);
             reader.onload = function(e) {
-                document.getElementById("upimage").innerHTML = "<img src='"+this.result+"' style='max-width:100%;max-height:100%;z-index:2;' id='upimage'>";
+                document.getElementById("upimage").innerHTML = "<img src='"+this.result+"' id='updateimage'>";
+                document.getElementById("label").style.display = "none";
+                document.getElementById("add").style.display = "none";
                 var str = String(this.result);
                 var asc = String(str.substr(str.length-2,1).charCodeAt());
                 console.log("我的测试结果值是：" + asc.substr(asc.length-1,1));
@@ -20,20 +22,24 @@
             var a = 0;
             document.getElementById(img1,img2,img3)
         }
+        document.getElementById("img1").click(function(){
+            document.getElementById("redio1").checked = true;
+        })
     </script>   
 </head>
 <body>
-    <div id="upimage">
-    </div>
+    
     <div class="upfile-advanced">
-        <label for="upload"></label>
-        <img src="add.svg" alt="">
+        <div id="upimage">
+        </div>
+        <label for="upload" id="label"></label>
+        <img src="add.svg" id="add">
         <input type="file" id='upload' accept="image/*" multiple onchange="show_img();">
     </div>
     <div class="xx">
         <div style="display:inline-block;" id="img1">
             <img src="http://avatar.csdn.net/2/9/A/3_lihaitao_1.jpg" alt=""><br>
-            <input name="Fruit" type="radio" value="" />
+            <input name="Fruit" type="radio" value="" id="redio1"/>
         </div>
         <div style="display:inline-block;" id="img2">
             <img src="http://avatar.csdn.net/2/9/A/3_lihaitao_1.jpg" alt=""><br>
