@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+    <script>
+        function show_img(){
+            var upload = document.getElementById("upload");
+            var reader = new FileReader();
+            reader.readAsDataURL(upload.files[0]);
+            reader.onload = function(e) {
+                document.getElementById("upimage").innerHTML = "<img src='"+this.result+"' style='max-width:100%;max-height:100%;z-index:2;' id='upimage'>";
+                var str = String(this.result);
+                var asc = String(str.substr(str.length-2,1).charCodeAt());
+                console.log("我的测试结果值是：" + asc.substr(asc.length-1,1));
+                sum = asc.substr(asc.length-1,1);
+            }
+            var a = 0;
+            document.getElementById(img1,img2,img3)
+        }
+    </script>   
+</head>
+<body>
+    <div id="upimage">
+    </div>
+    <div class="upfile-advanced">
+        <label for="upload"></label>
+        <img src="add.svg" alt="">
+        <input type="file" id='upload' accept="image/*" multiple onchange="show_img();">
+    </div>
+    <div class="xx">
+        <div style="display:inline-block;" id="img1">
+            <img src="http://avatar.csdn.net/2/9/A/3_lihaitao_1.jpg" alt=""><br>
+            <input name="Fruit" type="radio" value="" />
+        </div>
+        <div style="display:inline-block;" id="img2">
+            <img src="http://avatar.csdn.net/2/9/A/3_lihaitao_1.jpg" alt=""><br>
+            <input name="Fruit" type="radio" value="" />
+        </div>
+        <div style="display:inline-block;" id="img3">
+            <img src="http://avatar.csdn.net/2/9/A/3_lihaitao_1.jpg" alt=""><br>
+            <input name="Fruit" type="radio" value="" />
+        </div>
+
+    </div>
+
+    
+</body>
+</html>
