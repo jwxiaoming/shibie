@@ -5,30 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="main.css">
-    <script>
-        function show_img(){
-            var upload = document.getElementById("upload");
-            var reader = new FileReader();
-            reader.readAsDataURL(upload.files[0]);
-            reader.onload = function(e) {
-                document.getElementById("upimage").innerHTML = "<img src='"+this.result+"' id='updateimage'>";
-                document.getElementById("label").style.display = "none";
-                document.getElementById("add").style.display = "none";
-                var str = String(this.result);
-                var asc = String(str.substr(str.length-2,1).charCodeAt());
-                console.log("我的测试结果值是：" + asc.substr(asc.length-1,1));
-                sum = asc.substr(asc.length-1,1);
-            }
-            var a = 0;
-            document.getElementById(img1,img2,img3)
-        }
-        document.getElementById("img1").click(function(){
-            document.getElementById("redio1").checked = true;
-        })
-    </script>   
 </head>
 <body>
-    
+    <div id="result_img">
+
+    </div>
     <div class="upfile-advanced">
         <div id="upimage">
         </div>
@@ -37,21 +18,77 @@
         <input type="file" id='upload' accept="image/*" multiple onchange="show_img();">
     </div>
     <div class="xx">
-        <div style="display:inline-block;" id="img1">
-            <img src="http://avatar.csdn.net/2/9/A/3_lihaitao_1.jpg" alt=""><br>
-            <input name="Fruit" type="radio" value="" id="redio1"/>
+        <div class="ren" >
+            <img src="http://avatar.csdn.net/2/9/A/3_lihaitao_1.jpg" id="img1"><br>
         </div>
-        <div style="display:inline-block;" id="img2">
-            <img src="http://avatar.csdn.net/2/9/A/3_lihaitao_1.jpg" alt=""><br>
-            <input name="Fruit" type="radio" value="" />
+        <div class="ren" >
+            <img src="http://avatar.csdn.net/2/9/A/3_lihaitao_1.jpg" id="img2"><br>
         </div>
-        <div style="display:inline-block;" id="img3">
-            <img src="http://avatar.csdn.net/2/9/A/3_lihaitao_1.jpg" alt=""><br>
-            <input name="Fruit" type="radio" value="" />
+        <div class="ren" >
+            <img src="http://avatar.csdn.net/2/9/A/3_lihaitao_1.jpg" id="img3"><br>
         </div>
-
+        <div id="anniu">
+            <img src="anniu.jpeg" class="button" >
+        </div>
     </div>
 
-    
+<script>
+    var a = 0;
+    var b = 0;
+    var img1 = document.getElementById("img1");
+    var img2 = document.getElementById("img2");
+    var img3 = document.getElementById("img3");
+    img1.onclick = function(){
+        this.style.transform = 'scale(1.2)';
+        img2.style.transform = 'scale(1)';
+        img3.style.transform = 'scale(1)';
+        a = 1;
+        console.log(a);
+    }
+    img2.onclick = function() {
+        this.style.transform = 'scale(1.2)';
+        img1.style.transform = 'scale(1)';
+        img3.style.transform = 'scale(1)';
+        a = 2;
+        console.log(a);
+    }
+    img3.onclick = function() {
+        this.style.transform = 'scale(1.2)';
+        img1.style.transform = 'scale(1)';
+        img2.style.transform = 'scale(1)';
+        a = 3;
+        console.log(a);
+    }
+    var anniu = document.getElementById("anniu");
+    anniu.onclick = function() {
+        if(b==0){
+            alert('请上传一张你的照片！');
+        }else if(a==0) {
+            alert('请选择你的体型！');
+        }else{
+            alert('fnish!');
+            result();
+        }
+    }
+    function show_img(){
+        var upload = document.getElementById("upload");
+        var reader = new FileReader();
+        reader.readAsDataURL(upload.files[0]);
+        reader.onload = function(e) {
+            document.getElementById("upimage").innerHTML = "<img src='"+this.result+"' id='updateimage'>";
+            document.getElementById("label").style.display = "none";
+            document.getElementById("add").style.display = "none";
+            var str = String(this.result);
+            var asc = String(str.substr(str.length-2,1).charCodeAt());
+            console.log("我的测试结果值是：" + asc.substr(asc.length-1,1));
+            b = parseInt(asc.substr(asc.length-1,1));
+        }
+    }
+    function result() {
+        document.getElementById("result_img").innerHTML ="<img src='"+a+b+'.jpg'+"'>";
+        console.log(a,b);
+    }
+</script>
+
 </body>
 </html>

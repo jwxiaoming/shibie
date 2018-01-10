@@ -68,7 +68,15 @@ body{
     max-height:100%;
     z-index:2;
 }
-.xx{
+.xx {
     position: relative;
     margin: 40% auto;
+}
+.ren {
+    margin: 10px;
+    display:inline-block;
+}
+.button {
+    width: 200px;
+    margin: 0 auto;
 }
