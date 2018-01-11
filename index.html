@@ -5,19 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="animate.css">
 </head>
 <body>
     <div id="result_img">
 
     </div>
-    <div class="upfile-advanced">
+    <div class="upfile-advanced animated zoomIn">
         <div id="upimage">
         </div>
         <label for="upload" id="label"></label>
         <img src="add.svg" id="add">
         <input type="file" id='upload' accept="image/*" multiple onchange="show_img();">
     </div>
-    <div class="xx">
+    <div class="xx animated fadeInUpBig">
         <div class="ren" >
             <img src="http://avatar.csdn.net/2/9/A/3_lihaitao_1.jpg" id="img1"><br>
         </div>
@@ -26,6 +27,12 @@
         </div>
         <div class="ren" >
             <img src="http://avatar.csdn.net/2/9/A/3_lihaitao_1.jpg" id="img3"><br>
+        </div><br>
+        <div class="sex">
+            <img src="man.png" id="man">
+        </div>
+        <div class="sex">
+            <img src="woman.png" id="woman">
         </div>
         <div id="anniu">
             <img src="anniu.jpeg" class="button" >
@@ -33,31 +40,53 @@
     </div>
 
 <script>
-    var a = 0;
-    var b = 0;
+    var a = 0;  //体型
+    var b = 0;  //照片
+    var c = 0;  //性别
     var img1 = document.getElementById("img1");
     var img2 = document.getElementById("img2");
     var img3 = document.getElementById("img3");
-    img1.onclick = function(){
+    var man = document.getElementById("man");
+    var woman = document.getElementById("woman");
+    img1.onclick = function() {
+        this.className= "animated pulse infinite";
         this.style.transform = 'scale(1.2)';
         img2.style.transform = 'scale(1)';
+        img2.className = "";
         img3.style.transform = 'scale(1)';
+        img3.className = "";
         a = 1;
         console.log(a);
     }
     img2.onclick = function() {
+        this.className= "animated pulse infinite";
         this.style.transform = 'scale(1.2)';
         img1.style.transform = 'scale(1)';
+        img1.className = "";
         img3.style.transform = 'scale(1)';
+        img3.className= "";
         a = 2;
         console.log(a);
     }
     img3.onclick = function() {
+        this.className= "animated pulse infinite";
         this.style.transform = 'scale(1.2)';
         img1.style.transform = 'scale(1)';
+        img1.className = "";
         img2.style.transform = 'scale(1)';
+        img2.className = "";
         a = 3;
         console.log(a);
+    }
+    man.onclick = function() {
+        this.style.transform = 'scale(1.2)';
+        woman.style.transform = 'scale(1)';
+        c = 1;
+    }
+    woman.onclick = function() {
+        this.style.transform = 'scale(1.2)';
+        man.style.transform = 'scale(1)';
+        c = 2;
     }
     var anniu = document.getElementById("anniu");
     anniu.onclick = function() {
@@ -65,6 +94,8 @@
             alert('请上传一张你的照片！');
         }else if(a==0) {
             alert('请选择你的体型！');
+        }else if(c==0) {
+            alert('请选择你的性别！')
         }else{
             alert('fnish!');
             result();
@@ -85,8 +116,8 @@
         }
     }
     function result() {
-        document.getElementById("result_img").innerHTML ="<img src='"+a+b+'.jpg'+"'>";
-        console.log(a,b);
+        document.getElementById("result_img").innerHTML ="<img src='"+c+a+b+'.jpg'+"'>";
+        console.log(c,a,b);
     }
 </script>
 
